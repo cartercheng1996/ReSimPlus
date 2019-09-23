@@ -1,0 +1,16 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "../../../../core/RMs/count_down.v"
+verilog xil_defaultlib  "../../../../core/RMs/count_up.v"
+verilog xil_defaultlib  "../../../../core/Static/icapi.v"
+verilog xil_defaultlib  "../../../../core/Static/top.v"
+verilog xil_defaultlib  "../../../../core/RMs/up_counter.v"
+sv xil_defaultlib  "../../../../Generated_Artifact/ICAP_VIRTEX4_WRAPPER.sv"
+sv xil_defaultlib  "../../../../Generated_Artifact/count.sv"
+sv xil_defaultlib  "../../../../testbench/memctrl.sv"
+sv xil_defaultlib  "../../../../testbench/testbench.sv"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

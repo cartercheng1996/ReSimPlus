@@ -1,0 +1,20 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/chine/Desktop/Auto-Vivado/core/RMs/count_down.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module count_down
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/chine/Desktop/Auto-Vivado/core/RMs/count_up.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module count_up
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/chine/Desktop/Auto-Vivado/core/Static/icapi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module icapi
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/chine/Desktop/Auto-Vivado/core/Static/top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/chine/Desktop/Auto-Vivado/core/RMs/up_counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module up_counter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/chine/Desktop/Auto-Vivado/Generated_Artifact/ICAP_VIRTEX4_WRAPPER.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ICAP_VIRTEX4_WRAPPER
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/chine/Desktop/Auto-Vivado/Generated_Artifact/count.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module count
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/chine/Desktop/Auto-Vivado/testbench/memctrl.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module memctrl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/chine/Desktop/Auto-Vivado/testbench/testbench.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module testbench
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/chine/Desktop/Auto-Vivado/Vuvado project/DRS.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

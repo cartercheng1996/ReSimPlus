@@ -1,0 +1,43 @@
+/**************************************************************************************************************
+Author    : Zihao Cheng z5108506
+Degree 	  : Bachelor of computer engineering
+Supovisor : LinKan (George) Gong
+Company	  : UNSW Sydney Australia
+
+This is ReSimPlus auto generated file, use for simulation only!
+
+The purpose of this file is to Auto generate the SimB bitstream for simulation. The content of SimB
+can be modify by the user.
+**************************************************************************************************************/
+AA995566 // SYNC
+20000000 // Type 1 Nop
+30000001 // Type 1 Wr CRC (Cyclic Redundancy Check)
+7DE94CF3 // Signature
+30002001 // Type 1 Wr FAR (Frame Address Reg)
+00010002 // RRid:0x00, RMid:0x01, MNA:0x0002
+30008001 // Type 1 Wr CMD (Command)
+00000001 // WCFG (Write Configuration)
+30004000 // Type 1 Wr FDRI (Frame Data Input)
+50000010 // Type 2 Wr 16 Words
+2EBC3C0C // CONFIG_WORD 0
+00000000 // CONFIG_WORD 1
+00000000 // CONFIG_WORD 2
+00000000 // CONFIG_WORD 3
+3A60981B // CONFIG_WORD 4
+00000000 // CONFIG_WORD 5
+00000000 // CONFIG_WORD 6
+00000000 // CONFIG_WORD 7
+44D0ECAB // CONFIG_WORD 8
+00000000 // CONFIG_WORD 9
+00000000 // CONFIG_WORD 10
+00000000 // CONFIG_WORD 11
+E025B2A3 // CONFIG_WORD 12
+00000000 // CONFIG_WORD 13
+00000000 // CONFIG_WORD 14
+00000000 // CONFIG_WORD 15
+20000000 // Type 1 Nop
+20000000 // Type 1 Nop
+30008001 // Type 1 Wr CMD (Command)
+0000000D // DESYNC
+20000000 // Type 1 Nop
+20000000 // Type 1 Nop
