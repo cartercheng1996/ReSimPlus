@@ -53,5 +53,5 @@ source ICAP_VIRTEX4_WRAPPER.do
 source SimB_generator.do
 
 OutFile_MUX_TOP $ReSim_Artifact_MUX_path $IO_type $IO_pin $IO_name $FileName $RM_num $RM_name
-OutFile_ICAP_VIRTEX4_WRAPPER_TOP $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_path $RM_hierachy_list $RM_num $RM_Defualt $RM_name
 OutFile_SimB_TOP $ReSim_Artifact_SimB_path $RR_num $RM_num $RM_SimB_Len $MEM_ini_File_Name
+OutFile_ICAP_VIRTEX4_WRAPPER_TOP $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_path $RM_hierachy_list $RM_num $RM_Defualt $RM_name
