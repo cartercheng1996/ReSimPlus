@@ -3,6 +3,7 @@ Author    : Zihao Cheng z5108506
 Degree 	  : Bachelor of computer engineering
 Supovisor : LinKan (George) Gong
 Company	  : UNSW Sydney Australia
+This is the testbench provided by designer
 ****************************************************************************************************/
 
 `timescale 1ns/1ps
@@ -22,7 +23,7 @@ module testbench ();
 
 
 //-------------------------------------------------------------------
-// Testbranch reconfiguration-trriger
+// Reconfiguration-trriger
 //-------------------------------------------------------------------
 	initial
 		begin
@@ -45,7 +46,9 @@ module testbench ();
 	initial clock=0;
 	always #5 clock=~clock;
 
-
+//-------------------------------------------------------------------
+// DRS-design Top
+//-------------------------------------------------------------------
 	top top_0(clock,rstn,light_intensity,count_out,xbs_select,
 				mem_addr,mem_data_in,mem_rnw,mem_be,mem_ack,
 				mem_data_out);

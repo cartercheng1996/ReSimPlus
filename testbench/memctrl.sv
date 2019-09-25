@@ -3,6 +3,10 @@ Author    : Zihao Cheng z5108506
 Degree 	  : Bachelor of computer engineering
 Supovisor : LinKan (George) Gong
 Company	  : UNSW Sydney Australia
+This is simulation-only external configuration memory behaviour code
+It is 32 bit bandwidth (length of each word) * 4095 words size
+It has memory reading delay, and Mem-Ready (ACK) signal will assert once it receive the address request
+and the memory data is ready to be read. (Normally it is 6 clock cycle)
 ****************************************************************************************************/
 `timescale 1ns/1ps
 

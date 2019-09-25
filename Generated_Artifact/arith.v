@@ -6,15 +6,13 @@ Company	  : UNSW Sydney Australia
 
 This is ReSimPlus auto generated file, use for simulation only!
 
-The purpose of this file is to instantiate a RR and all RMs included and connect each of them
+The purpose of this file is to instantiate all RMs included in the RR region and connect each of them
 by the virtual MUXs. Therefore, it allows ReSimPlus can select one of the RM in each RR to be
 actived depended on the ICAPI bitstream traffic (When the condiction of re-configuration is
 triggered, bitstream contain selected RM ID infomation will be updated through this ICAPI port).
 ****************************************************************************************************/
 
-
 `timescale 1ns/1ps
-
 
 //---------------------------------------------
 //           Instantiating I/O port
@@ -42,7 +40,6 @@ module arith
     reg  [3:0] RM1_data;
     wire [3:0] RM1_result;
 
-
 //---------------------------------------------
 // Instantiating MUX connecting all RMs in RR
 //---------------------------------------------
@@ -52,13 +49,21 @@ module arith
         if (RM0_active) begin
             RM0_clk = clk;
             RM0_data = data;
+            RM1_clk = 1'bx;
+            RM1_data = 4'bx;
             result   = RM0_result;
         end else if (RM1_active)begin
             RM1_clk = clk;
             RM1_data = data;
+            RM0_clk = 1'bx;
+            RM0_data = 4'bx;
             result  = RM1_result;
         end else begin
-            result <= 4'hx;
+            RM0_clk = 1'bx;
+            RM0_data = 4'bx;
+            RM1_clk = 1'bx;
+            RM1_data = 4'bx;
+            result <= 4'bx;
         end
     end
 

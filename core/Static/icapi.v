@@ -1,6 +1,13 @@
+/****************************************************************************************************
+Author    : Zihao Cheng z5108506
+Degree 	  : Bachelor of computer engineering
+Supovisor : LinKan (George) Gong
+Company	  : UNSW Sydney Australia
+icapi, internal cofiguration port interface
+****************************************************************************************************/
 `timescale 1ns/1ps
 
-module icapi 
+module icapi
 (
 	input                 clk           ,
 	input                 rstn          ,
@@ -21,10 +28,10 @@ module icapi
 	output reg            ma_rnw        ,
 	output     [3:0]      ma_be         ,
 	input                 xbm_ack       ,
-	input      [31:0]     xbm_data      
+	input      [31:0]     xbm_data
 
 );
-	
+
 	`define IDLE     8'h0
 	`define REQMEM   8'h1
 	`define RDMEM    8'h2
@@ -36,15 +43,15 @@ module icapi
 
 	reg [31:0] baddr, bsize;
 	reg bop;
-	
+
 	wire is_more;
 	wire cfg_wen, cfg_cen, cfg_busy;
 	wire cfg_data_wr_en, cfg_rdbk_wr_en;
 	reg [31:0] cfg_data, cfg_rdbk;
 	wire [31:0] cfg_rdbk_i;
-	
+
 	reg [7:0] state_c, state_n;
-	
+
 //-------------------------------------------------------------------
 // bitstream address, size, etc
 //-------------------------------------------------------------------
@@ -61,19 +68,19 @@ module icapi
 				bsize <= rc_bsize;
 				bop <= rc_bop;
 			end else if ((state_c == `WRCFG) || ((state_c == `WRMEM)&&(xbm_ack == 1'b1))) begin
-				
-				// Should update address/size at the last cycle of a transfer 
+
+				// Should update address/size at the last cycle of a transfer
 				// operation. For wcfg, state WRCFG is the last cycle... For rcfg
-				// state WRMEM is the last state but it last for more than 
+				// state WRMEM is the last state but it last for more than
 				// one clock cycle, so we need (state_c == `WRMEM)&&(xbm_ack == 1'b1)
-				
+
 				baddr <= baddr + 32'h1;
 				bsize <= bsize - 32'h1;
 			end
 		end
 	end
 	assign is_more = (bsize > 32'h1);
-	
+
 //-------------------------------------------------------------------
 // Main FSM
 //-------------------------------------------------------------------
@@ -84,38 +91,38 @@ module icapi
 		else
 			state_c <= state_n;
 	end
-	
+
 	`define DO_REQ begin ma_req = 1'b1; end
 	`define DO_RD_MEM begin ma_select = 1'b1; ma_rnw = 1'b1; end
 	`define DO_WR_MEM begin ma_select = 1'b1; ma_rnw = 1'b0; end
-	
+
 	assign ma_addr = baddr;
 	assign ma_data = cfg_rdbk;
 	assign ma_be   = 4'hf;
-	
+
 	always @(*) begin
 		rc_done = 1'b0;
 		ma_req = 1'b0; ma_select = 1'b0; ma_rnw = 1'b0;
-		
+
 		case (state_c)
 			`IDLE: begin state_n = (rc_start)? `REQMEM: `IDLE; end
 			`REQMEM: begin state_n = (~xbm_gnt)? `REQMEM: (bop)?`RDMEM:`RDCFG ; `DO_REQ end
-			
+
 			// bop == 1'b0: rcfg, icap -> memory
 			// RCFG need an additional cycle (`RDLATCH) to latch the cdata_rb into register
 			`RDCFG: begin state_n = (cfg_busy)? `RDCFG: `RDLATCH; end
 			`RDLATCH: begin state_n = `WRMEM; end
 			`WRMEM: begin state_n = (~xbm_ack)? `WRMEM: (is_more)?`REQMEM:`DONE; `DO_WR_MEM end
-			
+
 			// bop == 1'b1: wcfg, memory -> icap
 			`RDMEM: begin state_n = (~xbm_ack)? `RDMEM:`WRCFG; `DO_RD_MEM end
 			`WRCFG: begin state_n = (is_more)? `REQMEM:`DONE; end
-			
+
 			`DONE: begin state_n = `IDLE; rc_done = 1'b1; end
 			default: begin state_n = `IDLE; end
 		endcase
 	end
-	
+
 	// synthesis translate_off
 	reg  [8*20:1] state_ascii;
 	always @(*) begin
@@ -134,7 +141,7 @@ module icapi
 //-------------------------------------------------------------------
 // ICAP
 //-------------------------------------------------------------------
-	
+
 	assign cfg_data_wr_en = ((state_c == `RDMEM)&&(xbm_ack == 1'b1));
 	always @(posedge clk or negedge rstn) begin
 		if (~rstn)
@@ -142,7 +149,7 @@ module icapi
 		else
 			if (cfg_data_wr_en) cfg_data <= xbm_data;
 	end
-	
+
 	assign cfg_rdbk_wr_en = (state_c == `RDLATCH);
 	always @(posedge clk or negedge rstn) begin
 		if (~rstn)
@@ -150,10 +157,10 @@ module icapi
 		else
 			if (cfg_rdbk_wr_en) cfg_rdbk <= cfg_rdbk_i;
 	end
-	
+
 	assign cfg_cen = ~((state_c == `WRCFG) || (state_c == `RDCFG));
 	assign cfg_wen = ~((state_c != `IDLE) && bop); // WRCFG: bop = 1'b1; RDCFG: bop = 1'b0; // bop == 1'b0: rcfg, icap -> memory // bop == 1'b1: wcfg, memory -> icap
-	
+
 	ICAP_VIRTEX4_WRAPPER icap_0 (
 		.CLK         (clk                ), // in : CLK
 		.CE          (cfg_cen            ), // in : 1 bit clock_enable (Active-Low ICAP Enable input)

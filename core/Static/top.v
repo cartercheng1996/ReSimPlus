@@ -3,6 +3,7 @@ Author    : Zihao Cheng z5108506
 Degree 	  : Bachelor of computer engineering
 Supovisor : LinKan (George) Gong
 Company	  : UNSW Sydney Australia
+This is the top of DRS design
 ****************************************************************************************************/
 `timescale 1ns/1ps
 
@@ -18,8 +19,6 @@ module top(
     output [ 3:0] mem_be,
     input         mem_ack,
     input  [31:0] mem_data_out
-
-
 );
 
 //-------------------------------------------------------------------
@@ -100,7 +99,7 @@ module top(
 		else modn_ascii <= "UNKNOW" ;
 	end
 
-	// Main FSM (control single RM's configuration)
+	// Main FSM (control each single RM's configuration in both RRs)
 	always @(posedge clock) begin
 			state_c <= state_n;
 			mod_c	<= mod_n;
@@ -161,13 +160,6 @@ module top(
 		else if (state_next==`RR1_CONFG ) 	state_next_ascii <= "RR1_CONFG " ;
 	end
 
-
-
-
-
-
-
-
 	always @(posedge clock or negedge rst_n) begin
 		if (~rst_n) begin
 			state_curr <= `IDIE;
@@ -180,9 +172,12 @@ module top(
 	reg [8:0] RR1_RM_chosen_curr;
 	reg [8:0] RR1_RM_chosen_next;
 
+	// RM in each RR will swap only when RM selection changed
+	// e.g. if currently RM0 (up) are configurated in RR0 and RM0 (ADD)
+	// also in RR1, then system deceiced to configurate RM1 in RR1, the
+	// RR0 will keep current RM and only RR1 will be reconfigurated.
 	always @(*) begin
 		case (state_curr)
-
 			`IDIE      :	begin
 				if (RR0_RM_chosen_curr != RR0_RM_chosen_next) begin
 					state_next = `RR0_CONFG;
@@ -238,7 +233,7 @@ module top(
 			end
 		endcase
 	end
-
+	// use to define initilised state
 	always @(posedge clock or negedge rst_n) begin
 		if (~rst_n) begin
 			RR0_RM_chosen_curr = `RST_BEGIN ;
@@ -248,6 +243,7 @@ module top(
 		end
 	end
 
+	// Reconfiguration stargies
 	always @(*) begin
 		if (light_intensity < 32'd100) begin
 			RR0_RM_chosen_next	   = `MOD_UP;
@@ -271,7 +267,8 @@ module top(
 //-------------------------------------------------------------------
 // Modules instantiation
 //-------------------------------------------------------------------
-  	icapi icapi_0 (
+	//icapi, internal cofiguration port interface
+	icapi icapi_0 (
 		.clk              (clock              ),
 		.rstn             (rst_n              ),
 		.rc_start         (rc_start           ),// In : RC start
@@ -305,32 +302,55 @@ module top(
 		.xbm_data         (mem_data_out       ) // In : memory data input to ICAP
 	);
 
-
-//-------------------------------------------------------------------
-// ReSim_base static testing
-//-------------------------------------------------------------------
 	wire [3:0] RRs_count_out;
 
-	always@(*) begin
-		if (state_curr != `IDIE || ~rst_n) begin
-			force RRs_count_out = 4'bx;
-			force count_out =4'bx;
-		end else begin
-			release RRs_count_out;
-			release count_out;
-		end
-	end
-
+	//RR0 black box, Vivado DRS work-flow required
+	//Work as a 'hole' waiting connection with a RM
 	count inst_count (
 		.rst       (count_rst),
 		.clk       (clock),
 		.count_out (RRs_count_out)
 	);
 
+	//RR0 black box, Vivado DRS work-flow required
 	arith inst_arith (
 		.clk       (clock),
 		.data      (RRs_count_out),
 		.result    (count_out)
 	);
+//-------------------------------------------------------------------
+// Isolation during configurationa
+// When ~rst, all modules' output and input will force to 'x'
+//-------------------------------------------------------------------
+	always@(*) begin
+		if (~rst_n) begin
+			force RRs_count_out = 4'bx;
+			force count_out = 4'bx;
+			force inst_count.rst = 1'bx;
+			force inst_count.clk = 1'bx;
+			force inst_count.count_out = 4'bx;
+			force inst_arith.clk = 1'bx;
+			force inst_arith.data = 4'bx;
+			force inst_arith.result = 4'bx;
+		end else if (state_curr != `IDIE) begin
+			force RRs_count_out = 4'bx;
+			force count_out = 4'bx;
+			release inst_count.rst;
+			release inst_count.clk;
+			release inst_count.count_out;
+			release inst_arith.clk;
+			release inst_arith.data;
+			release inst_arith.result;
+		end else begin
+			release RRs_count_out;
+			release count_out;
+			release inst_count.rst;
+			release inst_count.clk;
+			release inst_count.count_out;
+			release inst_arith.clk;
+			release inst_arith.data;
+			release inst_arith.result;
+		end
+	end
 
 endmodule
