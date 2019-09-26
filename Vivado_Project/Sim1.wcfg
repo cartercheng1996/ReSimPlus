@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="229600000000fs"></ZoomStartTime>
-      <ZoomEndTime time="1852600000001fs"></ZoomEndTime>
-      <Cursor1Time time="429595000000fs"></Cursor1Time>
+      <ZoomStartTime time="226833333334fs"></ZoomStartTime>
+      <ZoomEndTime time="1865833333335fs"></ZoomEndTime>
+      <Cursor1Time time="500000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="195"></NameColumnWidth>
+      <NameColumnWidth column_width="179"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
+   <WVObjectSize size="8" />
    <wvobject fp_name="/testbench/rstn" type="logic">
       <obj_property name="ElementShortName">rstn</obj_property>
       <obj_property name="ObjectShortName">rstn</obj_property>
@@ -129,10 +129,90 @@
          </wvobject>
       </wvobject>
    </wvobject>
+   <wvobject fp_name="group90" type="group">
+      <obj_property name="label">OP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/testbench/top_0/inst_op/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/dataa" type="array">
+         <obj_property name="ElementShortName">dataa[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dataa[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/datab" type="array">
+         <obj_property name="ElementShortName">datab[3:0]</obj_property>
+         <obj_property name="ObjectShortName">datab[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/result" type="array">
+         <obj_property name="ElementShortName">result[4:0]</obj_property>
+         <obj_property name="ObjectShortName">result[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM0_active" type="logic">
+         <obj_property name="ElementShortName">RM0_active</obj_property>
+         <obj_property name="ObjectShortName">RM0_active</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM0_clk" type="logic">
+         <obj_property name="ElementShortName">RM0_clk</obj_property>
+         <obj_property name="ObjectShortName">RM0_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM0_dataa" type="array">
+         <obj_property name="ElementShortName">RM0_dataa[3:0]</obj_property>
+         <obj_property name="ObjectShortName">RM0_dataa[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM0_datab" type="array">
+         <obj_property name="ElementShortName">RM0_datab[3:0]</obj_property>
+         <obj_property name="ObjectShortName">RM0_datab[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM0_result" type="array">
+         <obj_property name="ElementShortName">RM0_result[4:0]</obj_property>
+         <obj_property name="ObjectShortName">RM0_result[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM1_active" type="logic">
+         <obj_property name="ElementShortName">RM1_active</obj_property>
+         <obj_property name="ObjectShortName">RM1_active</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM1_clk" type="logic">
+         <obj_property name="ElementShortName">RM1_clk</obj_property>
+         <obj_property name="ObjectShortName">RM1_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM1_dataa" type="array">
+         <obj_property name="ElementShortName">RM1_dataa[3:0]</obj_property>
+         <obj_property name="ObjectShortName">RM1_dataa[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM1_datab" type="array">
+         <obj_property name="ElementShortName">RM1_datab[3:0]</obj_property>
+         <obj_property name="ObjectShortName">RM1_datab[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM1_result" type="array">
+         <obj_property name="ElementShortName">RM1_result[4:0]</obj_property>
+         <obj_property name="ObjectShortName">RM1_result[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM2_active" type="logic">
+         <obj_property name="ElementShortName">RM2_active</obj_property>
+         <obj_property name="ObjectShortName">RM2_active</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM2_clk" type="logic">
+         <obj_property name="ElementShortName">RM2_clk</obj_property>
+         <obj_property name="ObjectShortName">RM2_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM2_dataa" type="array">
+         <obj_property name="ElementShortName">RM2_dataa[3:0]</obj_property>
+         <obj_property name="ObjectShortName">RM2_dataa[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM2_datab" type="array">
+         <obj_property name="ElementShortName">RM2_datab[3:0]</obj_property>
+         <obj_property name="ObjectShortName">RM2_datab[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/top_0/inst_op/RM2_result" type="array">
+         <obj_property name="ElementShortName">RM2_result[4:0]</obj_property>
+         <obj_property name="ObjectShortName">RM2_result[4:0]</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject fp_name="group84" type="group">
       <obj_property name="label">ICAP4</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/testbench/top_0/icapi_0/icap_0/CFG_INO" type="array">
          <obj_property name="ElementShortName">CFG_INO[31:0]</obj_property>
          <obj_property name="ObjectShortName">CFG_INO[31:0]</obj_property>
@@ -153,10 +233,10 @@
    <wvobject fp_name="group1104" type="group">
       <obj_property name="label">TOP</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/testbench/top_0/mem_addr" type="array">
          <obj_property name="ElementShortName">mem_addr[31:0]</obj_property>
          <obj_property name="ObjectShortName">mem_addr[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/top_0/mem_data_out" type="array">
          <obj_property name="ElementShortName">mem_data_out[31:0]</obj_property>
@@ -219,9 +299,49 @@
          <obj_property name="ElementShortName">RR1_RM_chosen_next[8:0]</obj_property>
          <obj_property name="ObjectShortName">RR1_RM_chosen_next[8:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/testbench/top_0/RRs_count_out" type="array">
-         <obj_property name="ElementShortName">RRs_count_out[3:0]</obj_property>
-         <obj_property name="ObjectShortName">RRs_count_out[3:0]</obj_property>
+      <wvobject fp_name="group108" type="group">
+         <obj_property name="label">MEM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/testbench/mem_0/clk" type="logic">
+            <obj_property name="ElementShortName">clk</obj_property>
+            <obj_property name="ObjectShortName">clk</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/rstn" type="logic">
+            <obj_property name="ElementShortName">rstn</obj_property>
+            <obj_property name="ObjectShortName">rstn</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/xbs_select" type="logic">
+            <obj_property name="ElementShortName">xbs_select</obj_property>
+            <obj_property name="ObjectShortName">xbs_select</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/xbs_addr" type="array">
+            <obj_property name="ElementShortName">xbs_addr[31:0]</obj_property>
+            <obj_property name="ObjectShortName">xbs_addr[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/xbs_data" type="array">
+            <obj_property name="ElementShortName">xbs_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">xbs_data[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/xbs_rnw" type="logic">
+            <obj_property name="ElementShortName">xbs_rnw</obj_property>
+            <obj_property name="ObjectShortName">xbs_rnw</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/xbs_be" type="array">
+            <obj_property name="ElementShortName">xbs_be[3:0]</obj_property>
+            <obj_property name="ObjectShortName">xbs_be[3:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/sl_ack" type="logic">
+            <obj_property name="ElementShortName">sl_ack</obj_property>
+            <obj_property name="ObjectShortName">sl_ack</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/sl_data" type="array">
+            <obj_property name="ElementShortName">sl_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">sl_data[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/mem_0/MEMDELAY" type="array">
+            <obj_property name="ElementShortName">MEMDELAY[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MEMDELAY[31:0]</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
 </wave_config>
