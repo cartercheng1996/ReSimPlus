@@ -20,7 +20,6 @@ proc get_all_force_reg {RM_name} {
     set raw_reg_list [all_registers]
     set raw_reg_list [lsort $raw_reg_list]
     set reg_list {}
-    set pre_reg [lindex $raw_reg_list 0]
     for {set i 0}  {$i < [llength $raw_reg_list] } {incr i} {
         set curr_reg [lindex $raw_reg_list $i]
         set curr_reg [split $curr_reg reg]

@@ -17,10 +17,10 @@ triggered, bitstream contain selected RM ID infomation will be updated through t
 //---------------------------------------------
 //           Instantiating I/O port
 //---------------------------------------------
-module arith
+module arith 
 (
-   input            clk,
-   input [3:0]      data,
+   input   clk,
+   input   [3:0] data,
    output reg [3:0] result
 );
 
@@ -29,41 +29,41 @@ module arith
 //---------------------------------------------
 
     //RM0 Interface
-    reg        RM0_active;
-    reg        RM0_clk;
-    reg  [3:0] RM0_data;
-    wire [3:0] RM0_result;
+    reg       RM0_active;
+    reg       RM0_clk;
+    reg [3:0] RM0_data;
+    reg [3:0] RM0_result;
 
     //RM1 Interface
-    reg        RM1_active;
-    reg        RM1_clk;
-    reg  [3:0] RM1_data;
-    wire [3:0] RM1_result;
+    reg       RM1_active;
+    reg       RM1_clk;
+    reg [3:0] RM1_data;
+    reg [3:0] RM1_result;
+
 
 //---------------------------------------------
 // Instantiating MUX connecting all RMs in RR
 //---------------------------------------------
 
-    always@(*)
-    begin
+    always@(*) begin
         if (RM0_active) begin
             RM0_clk = clk;
-            RM0_data = data;
             RM1_clk = 1'bx;
+            RM0_data = data;
             RM1_data = 4'bx;
-            result   = RM0_result;
+            result = RM0_result;
         end else if (RM1_active)begin
             RM1_clk = clk;
-            RM1_data = data;
             RM0_clk = 1'bx;
+            RM1_data = data;
             RM0_data = 4'bx;
-            result  = RM1_result;
+            result = RM1_result;
         end else begin
             RM0_clk = 1'bx;
-            RM0_data = 4'bx;
             RM1_clk = 1'bx;
+            RM0_data = 4'bx;
             RM1_data = 4'bx;
-            result <= 4'bx;
+            result <= 4'hx;
         end
     end
 
@@ -71,13 +71,13 @@ module arith
 //        Instantiating all RMs in RR
 //---------------------------------------------
     arith_adder RM0 (
-        .clk    ( RM0_clk ),
+        .clk   ( RM0_clk ),
         .data   ( RM0_data ),
-        .result ( RM0_result )
+        .result   ( RM0_result )
     );
     arith_subtractor RM1 (
-        .clk    ( RM1_clk ),
+        .clk   ( RM1_clk ),
         .data   ( RM1_data ),
-        .result ( RM1_result )
+        .result   ( RM1_result )
     );
 endmodule

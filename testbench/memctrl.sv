@@ -34,7 +34,7 @@ module memctrl
 	initial begin
 		sl_ack = 1'b0;
 		sl_data = 32'b0;
-		$readmemh("C:/Users/chine/Desktop/ReSimPlus/Generated_Artifact/SimB/mem_bank.txt",zbtmem); // initialise memory from txt input
+		$readmemh("C:/Users/chine/Desktop/ReSimPlus/Reference File/SimB/mem_bank.txt",zbtmem); // initialise memory from txt input
 
 		forever begin
 			logic [31:0] addr;  // address is word address

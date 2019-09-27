@@ -1,3 +1,9 @@
+#****************************************************************************************************
+#Author    : Zihao Cheng z5108506
+#Degree 	  : Bachelor of computer engineering
+#Supovisor : LinKan (George) Gong
+#Company	  : UNSW Sydney Australia
+#****************************************************************************************************
 #----------------Random Number Generator -----------------
 proc myRand { min max } {
     set maxFactor [expr [expr $max + 1] - $min]

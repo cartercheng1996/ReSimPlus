@@ -8,17 +8,17 @@ This is the top of DRS design
 `timescale 1ns/1ps
 
 module top(
-	input    	  clock,
-	input         rst_n,
-	input  [31:0] light_intensity,
-	output [ 3:0] count_out,
-	output        xbs_select,
-    output [31:0] mem_addr,
-    output [31:0] mem_data_in,
-    output        mem_rnw,
-    output [ 3:0] mem_be,
-    input         mem_ack,
-    input  [31:0] mem_data_out
+	input    	       clock,
+    input              rst_n,
+    input       [31:0] light_intensity,
+    output reg	[ 3:0] count_out,
+    output             xbs_select,
+    output      [31:0] mem_addr,
+    output      [31:0] mem_data_in,
+    output             mem_rnw,
+    output      [ 3:0] mem_be,
+    input              mem_ack,
+    input       [31:0] mem_data_out
 );
 
 //-------------------------------------------------------------------
@@ -387,59 +387,19 @@ module top(
 		.result    (RRs_count_outc)
 	);
 
-	assign count_out = RRs_count_outc [3:0];
+
 //-------------------------------------------------------------------
 // Isolation during configurationa
-// When ~rst, all modules' output and input will force to 'x'
+// When ~rst, output will be zero
 //-------------------------------------------------------------------
-	always@(*) begin
-		if (~rst_n) begin
-			force RRs_count_outa = 4'bx;
-			force RRs_count_outb = 4'bx;
-			force RRs_count_outc = 5'bx;
-			force count_out = 4'bx;
-			force inst_count.rst = 1'bx;
-			force inst_count.clk = 1'bx;
-			force inst_count.count_out = 4'bx;
-			force inst_arith.clk = 1'bx;
-			force inst_arith.data = 4'bx;
-			force inst_arith.result = 4'bx;
-			force inst_op.clk = 1'bx;
-			force inst_op.dataa = 4'bx;
-			force inst_op.datab = 4'bx;
-			force inst_op.result = 5'bx;
+	reg [3:0] zero = 4'b0;
+    always @(posedge clock or negedge rst_n) begin
+        if (~rst_n || state_curr != `IDIE) begin
+            count_out = zero;
+        end else begin
+            count_out <= RRs_count_outc [3:0];
+        end
+    end
 
-		end else if (state_curr != `IDIE) begin
-			force RRs_count_outa = 4'bx;
-			force RRs_count_outb = 4'bx;
-			force RRs_count_outc = 5'bx;
-			force count_out = 4'bx;
-			release inst_count.rst;
-			release inst_count.clk;
-			release inst_count.count_out;
-			release inst_arith.clk;
-			release inst_arith.data;
-			release inst_arith.result;
-			release inst_op.clk;
-			release inst_op.dataa;
-			release inst_op.datab;
-			release inst_op.result;
-		end else begin
-			release RRs_count_outa;
-			release RRs_count_outb;
-			release RRs_count_outc;
-			release count_out;
-			release inst_count.rst;
-			release inst_count.clk;
-			release inst_count.count_out;
-			release inst_arith.clk;
-			release inst_arith.data;
-			release inst_arith.result;
-			release inst_op.clk;
-			release inst_op.dataa;
-			release inst_op.datab;
-			release inst_op.result;
-		end
-	end
 
 endmodule
