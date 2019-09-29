@@ -33,7 +33,7 @@ proc assign_signals_default {fp RM_index IO_type_list IO_name_list IO_pin_list R
                 puts $fp "            RM$j\_$signal_name = [expr $signal_pin+1]\'bx;"
             }
         } else {
-            puts $fp "            $signal_name <= 4'hx;"
+            puts $fp "            $signal_name <= 4'bx;"
         }
 
     }
@@ -95,7 +95,11 @@ triggered, bitstream contain selected RM ID infomation will be updated through t
        puts $fp "    reg       RM$j\_active;"
 
         for { set i 0}  {$i < [llength $IO_type_list] } {incr i} {
-             puts -nonewline $fp "    reg"
+            if {[lindex $IO_type_list $i] == {output}} {
+                puts -nonewline $fp "    wire"
+            } else {
+                puts -nonewline $fp "    reg"
+            }
              if { [lindex $IO_pin_list $i] > 0 } {
         	 set pin [lindex $IO_pin_list  $i]
         	 puts -nonewline $fp " \[$pin\:0\]"

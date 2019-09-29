@@ -3,9 +3,7 @@ Author    : Zihao Cheng z5108506
 Degree 	  : Bachelor of computer engineering
 Supovisor : LinKan (George) Gong
 Company	  : UNSW Sydney Australia
-
 This is ReSimPlus auto generated file, use for simulation only!
-
 The purpose of this file is to separate the simulation-only code-section. (Which can't be Sync. or elaborated)
 ****************************************************************************************************/
 //---------------------------------------------
@@ -51,7 +49,6 @@ The purpose of this file is to separate the simulation-only code-section. (Which
 //---------------------------------------------
 //           State-restoration part
 //---------------------------------------------
-
     always@(*)
     begin
         if (RR_ID == 8'h00 ) begin
@@ -79,19 +76,16 @@ The purpose of this file is to separate the simulation-only code-section. (Which
         end else if (RR_ID == 8'h02) begin
             if (RM_ID == 8'h00) begin
                 force     testbench.top_0.inst_op.RM1.result=5'dx;
-                force     testbench.top_0.inst_op.RM2.result=5'dx;
                 force     testbench.top_0.inst_op.RM2.compare=4'dx;
                 release   testbench.top_0.inst_op.RM0.result;
             end else if (RM_ID == 8'h01) begin
                 force     testbench.top_0.inst_op.RM0.result=5'dx;
                 force     testbench.top_0.inst_op.RM2.result=5'dx;
                 force     testbench.top_0.inst_op.RM2.compare=4'dx;
-                release   testbench.top_0.inst_op.RM1.result;
             end else if (RM_ID == 8'h02) begin
                 force     testbench.top_0.inst_op.RM0.result=5'dx;
                 force     testbench.top_0.inst_op.RM1.result=5'dx;
                 release   testbench.top_0.inst_op.RM2.compare;
-                release   testbench.top_0.inst_op.RM2.result;
             end
         end
     end

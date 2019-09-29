@@ -32,13 +32,13 @@ module arith
     reg       RM0_active;
     reg       RM0_clk;
     reg [3:0] RM0_data;
-    reg [3:0] RM0_result;
+    wire [3:0] RM0_result;
 
     //RM1 Interface
     reg       RM1_active;
     reg       RM1_clk;
     reg [3:0] RM1_data;
-    reg [3:0] RM1_result;
+    wire [3:0] RM1_result;
 
 
 //---------------------------------------------
@@ -63,7 +63,7 @@ module arith
             RM1_clk = 1'bx;
             RM0_data = 4'bx;
             RM1_data = 4'bx;
-            result <= 4'hx;
+            result <= 4'bx;
         end
     end
 

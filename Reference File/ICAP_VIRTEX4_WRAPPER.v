@@ -13,9 +13,7 @@ datapath (e.g. User design ICAPI port and bus) without needing to modify the ori
 (e.g. insert MUX).
 ****************************************************************************************************/
 
-
 `timescale 1ns/1ps
-
 
 //---------------------------------------------
 //           Instantiating I/O port

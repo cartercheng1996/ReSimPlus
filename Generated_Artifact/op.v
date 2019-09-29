@@ -34,21 +34,21 @@ module op
     reg       RM0_clk;
     reg [3:0] RM0_dataa;
     reg [3:0] RM0_datab;
-    reg [4:0] RM0_result;
+    wire [4:0] RM0_result;
 
     //RM1 Interface
     reg       RM1_active;
     reg       RM1_clk;
     reg [3:0] RM1_dataa;
     reg [3:0] RM1_datab;
-    reg [4:0] RM1_result;
+    wire [4:0] RM1_result;
 
     //RM2 Interface
     reg       RM2_active;
     reg       RM2_clk;
     reg [3:0] RM2_dataa;
     reg [3:0] RM2_datab;
-    reg [4:0] RM2_result;
+    wire [4:0] RM2_result;
 
 
 //---------------------------------------------
@@ -99,7 +99,7 @@ module op
             RM0_datab = 4'bx;
             RM1_datab = 4'bx;
             RM2_datab = 4'bx;
-            result <= 4'hx;
+            result <= 4'bx;
         end
     end
 
@@ -118,7 +118,7 @@ module op
         .datab   ( RM1_datab ),
         .result   ( RM1_result )
     );
-    op_compare RM2 (
+    op_comparer RM2 (
         .clk   ( RM2_clk ),
         .dataa   ( RM2_dataa ),
         .datab   ( RM2_datab ),

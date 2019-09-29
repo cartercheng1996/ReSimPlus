@@ -167,7 +167,7 @@ can be modify by the user.
             }
         }
     }
-    while { $len < $RM_SimB_Len } {
+    while { $len < [lindex $RM_SimB_Len $RR_num] } {
         puts $fp "FFFFFFFF // fill the gap"
         puts $fp_MEM "FFFFFFFF"
         incr len
@@ -176,7 +176,7 @@ can be modify by the user.
 }
 
 # ---------------------SimB Generator-----------------------
-proc OutFile_SimB_TOP {filePath RR_num RM_num RM_SimB_Len MEM_ini_File_Name} {
+proc OutFile_SimB_TOP {filePath RR_num RM_num_list RM_SimB_Len MEM_ini_File_Name} {
 
 #------------------User-Defined-------------------
 #CMD  Command
@@ -218,14 +218,13 @@ proc OutFile_SimB_TOP {filePath RR_num RM_num RM_SimB_Len MEM_ini_File_Name} {
     set fp_MEM [open $path_MEM  w+]
 
     for {set i 0} {$i<$RR_num} {incr i} {
-        for {set j 0} {$j<$RM_num} {incr j} {
+        for {set j 0} {$j<[llength [lindex $RM_num_list $i]]} {incr j} {
             set RM_x_path $filePath
-            append RM_x_path "/RR$i\_RM$j\_SimB.txt"
+            append RM_x_path "/RR$i\_RM$j\_SimB([lindex [lindex $RM_num_list $i] $j]).txt"
             set fp [open $RM_x_path w+]
             set Signature_list_tmp [file_ouputer $fp $fp_MEM $i $j $SimB_content_list $Signature_list $CONFIG_word_list $RM_SimB_Len ]
             set Signature_list [concat $Signature_list $Signature_list_tmp]
             close $fp
-            puts $Signature_list
         }
     }
 

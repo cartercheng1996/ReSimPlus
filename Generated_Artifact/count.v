@@ -19,8 +19,8 @@ triggered, bitstream contain selected RM ID infomation will be updated through t
 //---------------------------------------------
 module count 
 (
-   input            clk,
-   input            rst,
+   input   clk,
+   input   rst,
    output reg [3:0] count_out
 );
 
@@ -32,13 +32,13 @@ module count
     reg       RM0_active;
     reg       RM0_clk;
     reg       RM0_rst;
-    reg [3:0] RM0_count_out;
+    wire [3:0] RM0_count_out;
 
     //RM1 Interface
     reg       RM1_active;
     reg       RM1_clk;
     reg       RM1_rst;
-    reg [3:0] RM1_count_out;
+    wire [3:0] RM1_count_out;
 
 
 //---------------------------------------------
@@ -48,7 +48,7 @@ module count
     always@(*) begin
         if (RM0_active) begin
             RM0_clk = clk;
-k = 1'bx;
+            RM1_clk = 1'bx;
             RM0_rst = rst;
             RM1_rst = 1'bx;
             count_out = RM0_count_out;
@@ -63,7 +63,7 @@ k = 1'bx;
             RM1_clk = 1'bx;
             RM0_rst = 1'bx;
             RM1_rst = 1'bx;
-            count_out <= 4'hx;
+            count_out <= 4'bx;
         end
     end
 

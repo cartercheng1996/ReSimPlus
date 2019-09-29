@@ -52,7 +52,7 @@ module count
             RM1_clk = 1'bx;
             RM1_rst = 1'bx;
             count_out = RM0_count_out;
-        end else if (RM1_active)begin
+        end else if (RM1_active) begin
             RM1_clk = clk;
             RM1_rst = rst;
             RM0_clk = 1'bx;
@@ -63,7 +63,7 @@ module count
             RM0_rst = 1'bx;
             RM1_clk = 1'bx;
             RM1_rst = 1'bx;
-            count_out <= 4'hx;
+            count_out <= 4'bx;
         end
     end
 

@@ -11,7 +11,6 @@ The purpose of this file is to separate the simulation-only code-section. (Which
 //---------------------------------------------
 // Update MUX_TOP.do generated file MUX-signal
 //---------------------------------------------
-
     always@(*)
     begin
         if (RR_ID == 8'h00 ) begin
@@ -22,7 +21,6 @@ The purpose of this file is to separate the simulation-only code-section. (Which
                 testbench.top_0.inst_count.RM0_active <=0;
                 testbench.top_0.inst_count.RM1_active <=1;
             end
-
         end else if (RR_ID == 8'h01 ) begin
             if (RM_ID == 8'h00) begin
                 testbench.top_0.inst_arith.RM0_active <=1;

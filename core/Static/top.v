@@ -33,19 +33,19 @@ module top(
 	`define RR0_RM1_SIZE 16
 
 	`define RR1_RM0_ADDR 32'h40
-	`define RR1_RM0_SIZE 16
+	`define RR1_RM0_SIZE 48
 
-	`define RR1_RM1_ADDR 32'h60
-	`define RR1_RM1_SIZE 16
+	`define RR1_RM1_ADDR 32'h80
+	`define RR1_RM1_SIZE 48
 
-	`define RR2_RM0_ADDR 32'h80
-	`define RR2_RM0_SIZE 16
+	`define RR2_RM0_ADDR 32'hC0
+	`define RR2_RM0_SIZE 112
 
-	`define RR2_RM1_ADDR 32'hA0
-	`define RR2_RM1_SIZE 16
+	`define RR2_RM1_ADDR 32'h140
+	`define RR2_RM1_SIZE 112
 
-	`define RR2_RM2_ADDR 32'hC0
-	`define RR2_RM2_SIZE 16
+	`define RR2_RM2_ADDR 32'h1C0
+	`define RR2_RM2_SIZE 112
 
 	`define SBT_HEADER_SIZE 16
 	`define ONE_CYCLE_DELAY 10ns
