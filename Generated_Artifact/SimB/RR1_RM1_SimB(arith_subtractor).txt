@@ -12,7 +12,7 @@ can be modify by the user.
 AA995566 // SYNC
 20000000 // Type 1 Nop
 30000001 // Type 1 Wr CRC (Cyclic Redundancy Check)
-74EFE8D2 // Signature
+D0D071AD // Signature
 30002001 // Type 1 Wr FAR (Frame Address Reg)
 01010002 // RRid:0x01, RMid:0x01, MNA:0x0002
 30008001 // Type 1 Wr CMD (Command)

@@ -1,0 +1,22 @@
+0.6
+2017.2
+Jun 15 2017
+18:52:51
+C:/Users/chine/Desktop/ReSimPlus/Generated_Artifact/ICAP_VIRTEX4_WRAPPER.v,1569816766,verilog,,,C:/Users/chine/Desktop/ReSimPlus/Generated_Artifact/ICAP_VIRTEX4_WRAPPER_SimOnly.v,ICAP_VIRTEX4_WRAPPER,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/Generated_Artifact/ICAP_VIRTEX4_WRAPPER_SimOnly.v,1569816914,verilog,,,,,,,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/Generated_Artifact/arith.v,1569816749,verilog,,,,arith,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/Generated_Artifact/count.v,1569816733,verilog,,,,count,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/Generated_Artifact/op.v,1569816764,verilog,,,,op,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/ReSimPlus_Demo_Project1/ReSimPlus_Demo_Project1.sim/sim_1/behav/glbl.v,1497407496,verilog,,,,glbl,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR0/count_down.v,1569449716,verilog,,,,count_down,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR0/count_up.v,1569449716,verilog,,,,count_up,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR0/up_counter.v,1569449716,verilog,,,,up_counter,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR1/arith_adder.v,1569449716,verilog,,,,arith_adder,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR1/arith_subtractor.v,1569449716,verilog,,,,arith_subtractor,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR2/op_comparer.v,1569468827,verilog,,,,op_comparer,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR2/op_difference.v,1569465961,verilog,,,,op_difference,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/RRs/RR2/op_sum.v,1569465970,verilog,,,,op_sum,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/Static/icapi.v,1569449716,verilog,,,,icapi,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/core/Static/top.v,1569642823,verilog,,,,top,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/testbench/memctrl.sv,1569816710,systemVerilog,,,,memctrl,,xil_defaultlib,,,,,,
+C:/Users/chine/Desktop/ReSimPlus/testbench/testbench.sv,1569449716,systemVerilog,,,,testbench,,xil_defaultlib,,,,,,
