@@ -39,7 +39,7 @@ set RM_name_list { {count_up count_down} {arith_adder arith_subtractor} {op_sum 
 set RM_bitstream_list {32 64 128}
 
 # Your Top module of your DRS design
-set Top_Design_module_name "top"
+set Top_Design_module_name top
 
 # This flag will determine if the Auto-Generator will or will not add the Auto-Generated Simulation-Only file to your current vivado project
 # 0: will not do auto-add 1: will do auto-add

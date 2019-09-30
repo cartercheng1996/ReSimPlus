@@ -51,6 +51,7 @@ proc ReSimPlus_Auto_Generation {RR_MUX_name_list RM_name_list RM_SimB_Len_List T
 
 
     set curr_top $Top
+
     # ----------------create RM Mux for each RR-------------------
     source MUX_top.do
     for {set i 0 } {$i < [llength $RR_MUX_name_list]} {incr i} {
@@ -129,35 +130,28 @@ proc ReSimPlus_Auto_Generation {RR_MUX_name_list RM_name_list RM_SimB_Len_List T
     OutFile_ICAP_VIRTEX4_WRAPPER_TOP $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_path
     set fp [open $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path w+]
     close $fp
-    set_property top $curr_top [current_fileset]
 
     if { $Auto_Add_File_Flag ==1 } {
         add_files -norecurse $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_path
-        refresh_design
-    } else {
-        update_compile_order -fileset sources_1
     }
 
-
-
+    update_compile_order -fileset sources_1
+    refresh_design
+    set_property top $curr_top [current_fileset]
+    update_compile_order -fileset sources_1
+    refresh_design
+    synth_design -rtl -name rtl_1
+    refresh_design
 
     source ICAP_VIRTEX4_WRAPPER_SimOnly.do
-
-    if { $Auto_Add_File_Flag !=1 } {
-        set_property top $curr_top [current_fileset]
-        update_compile_order -fileset sources_1
-        refresh_design
-    }
-
-    #OutFile_ICAP_VIRTEX4_WRAPPER_SimOnly_TOP $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path $Testbench_DesignTop_hierachy_list $RM_name_list $Top $RR_MUX_name_list $RR_BB_name_list
+    OutFile_ICAP_VIRTEX4_WRAPPER_SimOnly_TOP $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path $Testbench_DesignTop_hierachy_list $RM_name_list $Top $RR_MUX_name_list $RR_BB_name_list
 
     if { $Auto_Add_File_Flag ==1 } {
-        #add_files -norecurse $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path
-        #update_compile_order -fileset sources_1
-        #refresh_design
+        update_compile_order -fileset sources_1
+        refresh_design
+        set_property top $curr_top [current_fileset]
+        close_design
     }
-
-
 
     #Log: Do DRS tuturial to see if can reduce user input
     #Log: Check more case when more deep RM herichy

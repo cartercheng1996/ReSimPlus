@@ -6,6 +6,14 @@
 #****************************************************************************************************
 # ----------------Helpper function get herichy path------------------
 
+proc sum_index {my_list i_end} {
+    set sum 0
+    for {set i 0} {$i < $i_end} {incr i} {
+        set sum [expr $sum + [lindex $my_list $i]]
+    }
+    return $sum
+}
+
 proc mycompare {arg1 arg2} {
    return [expr [string length $arg1] - [string length $arg2]]
 }

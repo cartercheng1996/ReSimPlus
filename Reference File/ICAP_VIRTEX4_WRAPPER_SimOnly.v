@@ -3,7 +3,9 @@ Author    : Zihao Cheng z5108506
 Degree 	  : Bachelor of computer engineering
 Supovisor : LinKan (George) Gong
 Company	  : UNSW Sydney Australia
+
 This is ReSimPlus auto generated file, use for simulation only!
+
 The purpose of this file is to separate the simulation-only code-section. (Which can't be Sync. or elaborated)
 ****************************************************************************************************/
 //---------------------------------------------
