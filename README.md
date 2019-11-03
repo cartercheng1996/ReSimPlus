@@ -1,5 +1,11 @@
 # ReSimPlus
 UNSW 4th Year Thesis project
+#********************************************************************************************************************************
+#Author    : Zihao Cheng z5108506
+#Degree 	  : Bachelor of computer engineering
+#Supovisor : LinKan (George) Gong
+#Company	  : UNSW Sydney Australia
+#********************************************************************************************************************************
 
    A field-programmable gate array (FPGA) is a type of integrated circuit which permits various user-defined reconfiguration after 
 manufacturing.[1] Dynamically Reconfigurable Systems (DRS) is a special type of implementation using FPGA. It allows a certain part 
@@ -19,14 +25,6 @@ implement a DRS design. Particularly, both ReSim and Vivado use open Tcl APIs an
 utilities together [5]. We also aim to simplify the ReSim’s workflow by removing the extra step of writing a Tcl script. Finally, some 
 showcases would be provided to demonstrate the capability and usability of simulating the DRS design by ReSim integrated into Vivado. 
 This document aims to report and reflect on current progress we made in Thesis A and B and revise the Thesis C planning.
-
-
-#********************************************************************************************************************************
-#Author    : Zihao Cheng z5108506
-#Degree 	  : Bachelor of computer engineering
-#Supovisor : LinKan (George) Gong
-#Company	  : UNSW Sydney Australia
-#********************************************************************************************************************************
 
 # -------------------Important Notice-----------------------
 #   1. We assume here each RM in a RR has same port interface
