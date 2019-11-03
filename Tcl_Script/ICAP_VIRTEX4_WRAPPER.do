@@ -38,29 +38,30 @@ datapath (e.g. User design ICAPI port and bus) without needing to modify the ori
     puts $fp "    `define SYNC        32'hAA995566"
     puts $fp "    `define NOP         32'h20000000"
     puts $fp "    `define FAR_WRITE   32'h30002001"
+    puts $fp "    `define WCFG        32'h00000001"
     puts $fp "    `define DESYNC      32'h0000000D"
 
     puts $fp "\n//---------------------------------------------
 //                     FSM
 //---------------------------------------------\n"
-    puts $fp "    parameter REST          = 2'b00;"
-    puts $fp "    parameter ENTER_CFG     = 2'b01;"
-    puts $fp "    parameter SEL_RM        = 2'b10;"
-    puts $fp "    parameter FINISH_CFG    = 2'b11;\n"
-    puts $fp "    reg  \[31:0] CFG_INO   = 32'hffff_ffff;"
-    puts $fp "    reg  \[31:0] RR_RM_INO = 32'hffff_ffff;"
+    puts $fp "    parameter REST          = 3'b000; //0"
+    puts $fp "    parameter ENTER_CFG     = 3'b001; //1"
+    puts $fp "    parameter SEL_RM        = 3'b010; //2"
+    puts $fp "    parameter FINISH_CFG    = 3'b011; //3"
+    puts $fp "    parameter Start_CFG     = 3'b100; //4"
+
+    puts $fp "    reg  \[31:0] CFG_INO   = 32'hxxxx_xxxx;"
+    puts $fp "    reg  \[31:0] RR_RM_INO = 32'hxxxx_xxxx;"
     puts $fp "    reg  \[7:0]  RR_ID;"
     puts $fp "    reg  \[7:0]  RM_ID;"
-    puts $fp "    reg  \[1:0]  curr_state = REST;\n"
+    puts $fp "    reg  \[2:0]  curr_state = REST;\n"
 
     puts $fp "    always@(*) begin"
-    puts $fp "        if (RR_RM_INO  != 32'hffff_ffff) begin"
-    puts $fp "            RR_ID \[7:0] = RR_RM_INO \[31:24];"
-    puts $fp "            RM_ID \[7:0] = RR_RM_INO \[23:16];"
-    puts $fp "        end"
-    puts $fp "    end"
+    puts $fp "        RR_ID \[7:0] = RR_RM_INO \[31:24];"
+    puts $fp "        RM_ID \[7:0] = RR_RM_INO \[23:16];"
+    puts $fp "    end\n"
 
-    puts $fp "    assign O = 1'b0;"
+    puts $fp "    assign O = 1'b0;\n"
 
     puts $fp "    always@(*)"
     puts $fp "    begin"
@@ -81,8 +82,14 @@ datapath (e.g. User design ICAPI port and bus) without needing to modify the ori
     puts $fp "                SEL_RM:         if (I == `FAR_WRITE) begin"
     puts $fp "                                    curr_state = SEL_RM;"
     puts $fp "                                end else begin"
-    puts $fp "                                    curr_state = FINISH_CFG;"
+    puts $fp "                                    curr_state = Start_CFG;"
     puts $fp "                                    CFG_INO = I;"
+    puts $fp "                                end\n"
+
+    puts $fp "                Start_CFG:      if (I == `WCFG) begin"
+    puts $fp "                                    curr_state = FINISH_CFG;"
+    puts $fp "                                end else begin"
+    puts $fp "                                     curr_state = Start_CFG;"
     puts $fp "                                end\n"
 
     puts $fp "                FINISH_CFG:     if (I == `DESYNC) begin"
@@ -90,7 +97,11 @@ datapath (e.g. User design ICAPI port and bus) without needing to modify the ori
     puts $fp "                                    RR_RM_INO = CFG_INO;"
     puts $fp "                                end else begin"
     puts $fp "                                    curr_state = FINISH_CFG;"
+    puts $fp "                                    RR_RM_INO \[31:24] = CFG_INO \[31:24];"
+    puts $fp "                                    RR_RM_INO \[23:16] = 8'hff;"
+    puts $fp "                                    RR_RM_INO \[15: 0] = CFG_INO \[15: 0];"
     puts $fp "                                end\n"
+
     puts $fp "                default:        curr_state = REST;"
     puts $fp "            endcase"
     puts $fp "        end else begin"
@@ -102,6 +113,9 @@ datapath (e.g. User design ICAPI port and bus) without needing to modify the ori
 // Include the un-elaborated section
 //---------------------------------------------\n"
     puts $fp "   \`include \"ICAP_VIRTEX4_WRAPPER_SimOnly.v\"\n"
+    puts $fp "         "
+    puts $fp "         "
+    puts $fp "         "
     puts $fp "endmodule"
     close $fp
 }

@@ -19,7 +19,9 @@ proc ReSimPlus_Auto_Generation {RR_MUX_name_list RM_name_list RM_SimB_Len_List T
     set ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_path $ReSim_Artifact_path
     append ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_path "/ICAP_VIRTEX4_WRAPPER.v"
     set ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path $ReSim_Artifact_path
+    set ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path_tmp $ReSim_Artifact_path
     append ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path "/ICAP_VIRTEX4_WRAPPER_SimOnly.v"
+    append ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path_tmp "/ICAP_VIRTEX4_WRAPPER_SimOnly_tmp.v"
     set ReSim_Artifact_SimB_path $ReSim_Artifact_path
     append ReSim_Artifact_SimB_path "/SimB"
     set MEM_ini_File_Name "mem_bank.txt"
@@ -144,7 +146,26 @@ proc ReSimPlus_Auto_Generation {RR_MUX_name_list RM_name_list RM_SimB_Len_List T
     refresh_design
 
     source ICAP_VIRTEX4_WRAPPER_SimOnly.do
-    OutFile_ICAP_VIRTEX4_WRAPPER_SimOnly_TOP $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path $Testbench_DesignTop_hierachy_list $RM_name_list $Top $RR_MUX_name_list $RR_BB_name_list
+    OutFile_ICAP_VIRTEX4_WRAPPER_SimOnly_TOP $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path_tmp $Testbench_DesignTop_hierachy_list $RM_name_list $Top $RR_MUX_name_list $RR_BB_name_list
+
+    #--------------------------------------------------------------
+    # Since Vivado don't like uncomplete file, and this file need
+    # doing elebrate design many time, so need to create template
+    # file first then write to the main file later.
+    #--------------------------------------------------------------
+    set afile $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path
+    set bfile $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path_tmp
+
+    set fp [open $bfile r]
+    set fpw [open $afile w+]
+
+    while { [gets $fp data] >= 0 } {
+    puts $fpw $data
+    }
+    close $fp
+    close $fpw
+
+    file delete -force $ReSim_Artifact_ICAP_VIRTEX4_WRAPPER_SimOnly_path_tmp
 
     if { $Auto_Add_File_Flag ==1 } {
         update_compile_order -fileset sources_1
@@ -153,8 +174,7 @@ proc ReSimPlus_Auto_Generation {RR_MUX_name_list RM_name_list RM_SimB_Len_List T
         close_design
     }
 
-    #Log: Do DRS tuturial to see if can reduce user input
-    #Log: Check more case when more deep RM herichy
+
 
 
 }

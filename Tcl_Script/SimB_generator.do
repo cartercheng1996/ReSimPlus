@@ -51,8 +51,8 @@ proc file_ouputer {fp fp_MEM RR_num RM_num SimB_content_list Signature_list CONF
     set DESYNC      0000000D
     set MNA         2
 
-    set Wr_Words_v2 500000
-    append Wr_Words_v2 [format "%02x" [llength $CONFIG_word_list]]
+    set Wr_Words_v2 5
+    append Wr_Words_v2 [format "%07x" [lindex $RM_SimB_Len $RR_num]]
 
     set Constant_list {}
     lappend Constant_list $SYNC
@@ -154,10 +154,26 @@ can be modify by the user.
                 incr len
             }
 
+            "Wr_Words" {
+                set m 0
+                puts $fp "$Wr_Words_v2 // Type 2 Wr [lindex $RM_SimB_Len $RR_num] Words"
+                puts $fp_MEM $Wr_Words_v2
+                incr len
+            }
+
             "DESYNC" {
                 puts $fp "$DESYNC // DESYNC"
                 puts $fp_MEM $DESYNC
                 incr len
+            }
+
+            "Padding" {
+                set pad_len 0
+                while { $pad_len < [lindex $RM_SimB_Len $RR_num] } {
+                    puts $fp "FFFFFFFF // CONFIG_WORD $pad_len"
+                    puts $fp_MEM "FFFFFFFF"
+                    incr pad_len
+                }
             }
 
             default {
@@ -167,11 +183,7 @@ can be modify by the user.
             }
         }
     }
-    while { $len < [lindex $RM_SimB_Len $RR_num] } {
-        puts $fp "FFFFFFFF // fill the gap"
-        puts $fp_MEM "FFFFFFFF"
-        incr len
-    }
+
     return $Signiture
 }
 
@@ -200,7 +212,8 @@ proc OutFile_SimB_TOP {filePath RR_num RM_num_list RM_SimB_Len MEM_ini_File_Name
     lappend SimB_content_list "Wr_CMD_v1"
     lappend SimB_content_list "WCFG"
     lappend SimB_content_list "Wr_FDRI_v1"
-    lappend SimB_content_list "Wr_Words_v2"
+    lappend SimB_content_list "Wr_Words"
+    lappend SimB_content_list "Padding"
     lappend SimB_content_list "Nop_v1"
     lappend SimB_content_list "Nop_v1"
     lappend SimB_content_list "Wr_CMD_v1"

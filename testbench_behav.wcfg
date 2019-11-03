@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="3412000000001fs"></ZoomEndTime>
-      <Cursor1Time time="413605000000fs"></Cursor1Time>
+      <ZoomStartTime time="110898000000fs"></ZoomStartTime>
+      <ZoomEndTime time="112440000001fs"></ZoomEndTime>
+      <Cursor1Time time="111155000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="112"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="162"></NameColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="8" />
    <wvobject fp_name="group152" type="group">
@@ -500,24 +500,24 @@
          <obj_property name="ObjectShortName">RM_ID[7:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/top_0/icapi_0/icap_0/curr_state" type="array">
-         <obj_property name="ElementShortName">curr_state[1:0]</obj_property>
-         <obj_property name="ObjectShortName">curr_state[1:0]</obj_property>
+         <obj_property name="ElementShortName">curr_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">curr_state[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/top_0/icapi_0/icap_0/REST" type="array">
-         <obj_property name="ElementShortName">REST[1:0]</obj_property>
-         <obj_property name="ObjectShortName">REST[1:0]</obj_property>
+         <obj_property name="ElementShortName">REST[2:0]</obj_property>
+         <obj_property name="ObjectShortName">REST[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/top_0/icapi_0/icap_0/ENTER_CFG" type="array">
-         <obj_property name="ElementShortName">ENTER_CFG[1:0]</obj_property>
-         <obj_property name="ObjectShortName">ENTER_CFG[1:0]</obj_property>
+         <obj_property name="ElementShortName">ENTER_CFG[2:0]</obj_property>
+         <obj_property name="ObjectShortName">ENTER_CFG[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/top_0/icapi_0/icap_0/SEL_RM" type="array">
-         <obj_property name="ElementShortName">SEL_RM[1:0]</obj_property>
-         <obj_property name="ObjectShortName">SEL_RM[1:0]</obj_property>
+         <obj_property name="ElementShortName">SEL_RM[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SEL_RM[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/top_0/icapi_0/icap_0/FINISH_CFG" type="array">
-         <obj_property name="ElementShortName">FINISH_CFG[1:0]</obj_property>
-         <obj_property name="ObjectShortName">FINISH_CFG[1:0]</obj_property>
+         <obj_property name="ElementShortName">FINISH_CFG[2:0]</obj_property>
+         <obj_property name="ObjectShortName">FINISH_CFG[2:0]</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group224" type="group">

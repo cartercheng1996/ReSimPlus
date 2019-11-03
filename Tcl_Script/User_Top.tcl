@@ -36,13 +36,16 @@ set RM_name_list { {count_up count_down} {arith_adder arith_subtractor} {op_sum 
 
 # The RM_bitstream_list is the length of the real configuration bitstream store in memory.
 # If RM_bitstream_list is {32 64 128}, then it means RR0 has fixed RM_bitstream length = 32 etc.
-set RM_bitstream_list {32 64 128}
+# Note: ReSimPlus+ SimB has 16 word long header file, after file are generated,
+# please check /Generated_Artifact/SimB folder
+set RM_bitstream_list {16 48 112}
 
 # Your Top module of your DRS design
 set Top_Design_module_name top
 
 # This flag will determine if the Auto-Generator will or will not add the Auto-Generated Simulation-Only file to your current vivado project
 # 0: will not do auto-add 1: will do auto-add
+# Highly recommend use auto-add, otherwise u need to modify the auto_Gen_yop.do
 # If you chose do not auto add, please manually add the generated file in folder:
 # "Generated_Aritifact" and if elaboration is not auto-done please do it manually,
 # otherwise it will cause an error in following steps.

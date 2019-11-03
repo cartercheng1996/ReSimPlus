@@ -131,12 +131,14 @@ The purpose of this file is to separate the simulation-only code-section. (Which
             } else {
                 puts $fp "        end else if (RR_ID == 8'd$k) begin"
         }
-        for {set j 0}  {$j < $RM_num } {incr j} {
+        for {set j 0}  {$j <= $RM_num } {incr j} {
 
             if {$j == 0} {
                 puts $fp "            if (RM_ID == 8'd0) begin"
-            } else {
+            } elseif {$j<$RM_num} {
                 puts $fp "            end else if (RM_ID == 8'd$j) begin"
+            } else {
+                puts $fp "            end else begin"
             }
 
             for {set i 0}  {$i <$RM_num } {incr i} {
@@ -144,11 +146,16 @@ The purpose of this file is to separate the simulation-only code-section. (Which
                 puts -nonewline $fp "                "
                 assign_path $fp [lappend path $curr_path]
                 puts -nonewline $fp "RM$i\_active <="
-                if {$i == $j} {
-                    puts $fp "1;"
+                if {$j < $RM_num} {
+                    if {$i == $j} {
+                        puts $fp "1;"
+                    } else {
+                        puts $fp "0;"
+                    }
                 } else {
                     puts $fp "0;"
                 }
+
             }
         }
         puts $fp "            end"
@@ -204,11 +211,13 @@ The purpose of this file is to separate the simulation-only code-section. (Which
         }
         puts $signal_index
 
-        for {set i 0}  {$i < $RM_num } {incr i} {
+        for {set i 0}  {$i <= $RM_num } {incr i} {
             if {$i == 0} {
                 puts $fp "            if (RM_ID == 8'd0) begin"
-            } else {
+            } elseif {$i < $RM_num} {
                 puts $fp "            end else if (RM_ID == 8'd$i) begin"
+            } else {
+                puts $fp "            end else begin"
             }
 
             for {set a 0}  {$a < $RM_num } {incr a} {
@@ -216,12 +225,16 @@ The purpose of this file is to separate the simulation-only code-section. (Which
                 set counter 0
                 for {set b 0}  {$b < [lindex $force_reg_num_list $a] } {incr b} {
                     puts -nonewline $fp "                "
-                    if {$a!=$i} {
-                        puts -nonewline $fp "force     "
+                    if { $i < $RM_num } {
+                        if {$a!=$i} {
+                            puts -nonewline $fp "force     "
+                        } else {
+                            puts -nonewline $fp "release   "
+                        }
                     } else {
-                        puts -nonewline $fp "release   "
-                    }
+                        puts -nonewline $fp "force     "
 
+                    }
                     set path $RM_hierachy_list
                     assign_path $fp [lappend path $curr_path]
                     puts -nonewline $fp "RM$a\."
