@@ -1,7 +1,7 @@
 # ReSimPlus
 UNSW 4th Year Thesis project
 
-      A field-programmable gate array (FPGA) is a type of integrated circuit which permits various user-defined reconfiguration after 
+   A field-programmable gate array (FPGA) is a type of integrated circuit which permits various user-defined reconfiguration after 
 manufacturing.[1] Dynamically Reconfigurable Systems (DRS) is a special type of implementation using FPGA. It allows a certain part 
 of hardware logic to be reconfigured partially while the rest of the hardware design is continually operating. As a result, multiple 
 reconfigurable hardware modules that built different functional circuits can be mapped to the same region of FPGA. In other words, 
