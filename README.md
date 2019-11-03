@@ -21,12 +21,12 @@ showcases would be provided to demonstrate the capability and usability of simul
 This document aims to report and reflect on current progress we made in Thesis A and B and revise the Thesis C planning.
 
 
-#***************************************************************************************************************************************
+#********************************************************************************************************************************
 #Author    : Zihao Cheng z5108506
 #Degree 	  : Bachelor of computer engineering
 #Supovisor : LinKan (George) Gong
 #Company	  : UNSW Sydney Australia
-#***************************************************************************************************************************************
+#********************************************************************************************************************************
 
 # -------------------Important Notice-----------------------
 #   1. We assume here each RM in a RR has same port interface
